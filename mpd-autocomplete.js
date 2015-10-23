@@ -11,12 +11,12 @@ angular.module('mpd.autocomplete', [])
 							delay:			$attrs.delay || false,
 							disabled:		$attrs.autocompleteDisabled || false,
 							minLength:		$attrs.minLength || 3,
-							source:			$attrs.source,
+							source:			$scope[$attrs.source] || $scope.attrs,
 							select:			$attrs.select || function(ev, ui) {
-								$scope.$apply(function() {
-									ngModel.$setViewValue(ui.item.value);
-								});
-							}
+																$scope.$apply(function() {
+																	ngModel.$setViewValue(ui.item.value);
+																});
+															}
 						});
 		}
 	};
